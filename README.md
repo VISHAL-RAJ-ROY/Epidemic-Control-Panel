@@ -1,6 +1,12 @@
-# Epidemic Spread on Dynamic Networks
+# Epidemic Control Panel
 
 Modelling and Predicting the spread of epidemics on dynamic networks
+
+![Usage](./Images/usage.gif)
+
+
+
+## State Transition Diagram
 
 ![Block Diagram](./Images/StateTransitionDiagram.png)
 
@@ -15,20 +21,3 @@ The following difference equations were used.
 ![Equation 2](./Images/Equations/Eq2.png)
 
 ![Equation 3](./Images/Equations/eq3.png)
-
-## Usage
-
-```
-python weighted_model.py
-
-```
-The following gif illustrates the usage.
-
-![Usage](./Images/usage.gif)
-
-
-## References 
-https://drive.google.com/drive/folders/1zG9q5EILux_uz7lpV4HLdRB81hHZfY4_?usp=sharing
-
-
-
