@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<script src="https://d3js.org/d3.v2.min.js?2.9.3"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<head>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <br />
+  <div class="tooltip"></div>
+  <div class="rangeslider" id="navbar">
+    <h3>Day <span id="demo"></span> of <span id="demo1"></span></h3>
+    <input
+      type="range"
+      min="0"
+      max="10"
+      value="0"
+      class="myslider"
+      id="sliderRange"
+    />
+    <br />
+
+    <br />
+    <!-- <h6 style="text-align: 300px;">
+      S : Susceptible, I : Infected, R : Recovered and D : Dead
+    </h6> -->
+  </div>
+  <div>
+    <canvas id="myChart1" style="display: none;"></canvas>
+    <canvas id="myChart2" style="display: none;"></canvas>
+    <canvas id="myChart3" style="display: none;"></canvas>
+  </div>
+  <div id="sidenav">
+    <h1>Control Panel</h1>
+    <div class="myForm">
+      <!-- <p>
+        Specify Total steps , default value is 10
+      </p> -->
+      <form id="frm1" action="/action_page.php">
+        Total Days:
+        <input
+          type="text"
+          id="Total_step"
+          name="fname"
+          style="width: 30%;"
+          value="10"
+        />
+        <!-- <br /><br /> -->
+        <!-- Time_step: <input type="text" id="Time_step" name="lname" /><br /><br /> -->
+        <input type="button" id="myInput" value="Submit" />
+      </form>
+    </div>
+    <br />
+    <label for="Model">Choose a Model:</label>
+    <select id="Model" name="modelList" form="modelForm">
+      <option value="SIRD">SIRD</option>
+      <option value="SIR">SIR</option>
+      <option value="SIS">SIS</option>
+    </select>
+    <br />
+    <br />
+    <div id="chooseACityDiv">
+      <label for="City">Choose a City:</label>
+      <select id="City" name="cityList" form="cityForm">
+        <option value="0">Same for All</option>
+        <option value="1">Mumbai</option>
+        <option value="2">Delhi</option>
+        <option value="3">Bengaluru</option>
+        <option value="4">Kolkata</option>
+        <option value="5">Chennai</option>
+        <option value="6">Ahmedabad</option>
+        <option value="7">Hyderabad</option>
+        <option value="8">Pune</option>
+        <option value="9">Surat</option>
+        <option value="10">Kanpur</option>
+        <option value="11">Jaipur</option>
+        <option value="12">Navi Mumbai</option>
+        <option value="13">Lucknow</option>
+        <option value="14">Nagpur</option>
+        <option value="15">Indore</option>
+        <option value="16">Patna</option>
+        <option value="17">Bhopal</option>
+        <option value="18">Ludhiana</option>
+        <option value="19">Tirunelveli</option>
+        <option value="20">Agra</option>
+      </select>
+    </div>
+    <br />
+    <div id="graphforcity">
+      <label for="Cities"> See Graph for City </label>
+      <select id="Cities" name="graphcity" form="graphform">
+        <option value="0">None</option>
+        <option value="1">Mumbai</option>
+        <option value="2">Delhi</option>
+        <option value="3">Bengaluru</option>
+        <option value="4">Kolkata</option>
+        <option value="5">Chennai</option>
+        <option value="6">Ahmedabad</option>
+        <option value="7">Hyderabad</option>
+        <option value="8">Pune</option>
+        <option value="9">Surat</option>
+        <option value="10">Kanpur</option>
+        <option value="11">Jaipur</option>
+        <option value="12">Navi Mumbai</option>
+        <option value="13">Lucknow</option>
+        <option value="14">Nagpur</option>
+        <option value="15">Indore</option>
+        <option value="16">Patna</option>
+        <option value="17">Bhopal</option>
+        <option value="18">Ludhiana</option>
+        <option value="19">Tirunelveli</option>
+        <option value="20">Agra</option>
+      </select>
+    </div>
+    <h3>Rates :</h3>
+    <div id="randomRateDiv">
+      <label for="randomRateCheckbox"> Random Rates ?</label>
+      <input
+        type="checkbox"
+        id="randomRateCheckbox"
+        name="randomRateCheckbox"
+        value="1"
+      />
+      <br />
+      <br />
+    </div>
+
+    <p id="infectionPara">Infection Rate : <span id="infectionRate"></span></p>
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      class="myslider"
+      id="infectionSlider"
+    />
+    <p id="recoveryPara">Recovery Rate : <span id="recoveryRate"></span></p>
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      class="myslider"
+      id="recoverySlider"
+    />
+    <p id="reinfectionPara">
+      Re-infection Rate : <span id="reinfectionRate"></span>
+    </p>
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      class="myslider"
+      id="reinfectionSlider"
+    />
+    <p id="deathPara">Death Rate : <span id="deathRate"></span></p>
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      class="myslider"
+      id="deathSlider"
+    />
+    <br />
+    <h3>Initial Value :</h3>
+    <div id="randomInitialValueDiv">
+      <label for="randomInitialValueCheckbox"> Random Initial Values ?</label>
+      <input
+        type="checkbox"
+        id="randomInitialValueCheckbox"
+        name="randomInitialValueCheckbox"
+        value="1"
+      />
+      <br />
+      <br />
+    </div>
+    <p id="susceptiblePara">
+      Percentage Susceptible : <span id="percentageSusceptible"></span>
+    </p>
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      class="myslider"
+      id="susceptibleSlider"
+    />
+    <p id="infectedPara">
+      Percentage Infected : <span id="percentageInfected"></span>
+    </p>
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      class="myslider"
+      id="infectedSlider"
+    />
+    <p id="recoveredPara">
+      Percentage Recovered : <span id="percentageRecovered"></span>
+    </p>
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      class="myslider"
+      id="recoveredSlider"
+    />
+    <!-- <p>Percentage Dead : <span id="percentageDead"></span></p> -->
+    <h3>Terms :</h3>
+    <p>
+      S : Susceptible<br /><br />
+      I : Infected<br /><br />
+      R : Recovered <br /><br />
+      D : Dead <br /><br />
+    </p>
+  </div>
+  -->
+  <script src="index.js"></script>
+  <script src="graph.js"></script>
+  <!-- <script src="oldGraph.js"></script> -->
+  <script src="navbar.js"></script>
+</body>
