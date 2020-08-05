@@ -162,7 +162,7 @@ def calculate_based_on_paper(D,G):
 
 def main(lr,lr_init,time_step,total_steps):
     #df = adjacency matrix
-    ddf=pd.read_csv('Matrix.csv',sep = ',',header = None)
+    ddf=pd.read_csv('./data/Matrix.csv',sep = ',',header = None)
     # print ("Adjacency Matrix :")    
     # print ddf
     df = np.zeros((nax,nax))
