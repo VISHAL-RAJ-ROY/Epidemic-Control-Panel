@@ -2,13 +2,13 @@
 
 Modelling and Predicting the spread of epidemics on dynamic networks
 
-![Usage](./Images/usage.gif)
+![Usage](./images/usage.gif)
 
 
 
 ## State Transition Diagram
 
-![Block Diagram](./Images/StateTransitionDiagram.png)
+![Block Diagram](./images/StateTransitionDiagram.png)
 
 
 
@@ -16,8 +16,8 @@ Modelling and Predicting the spread of epidemics on dynamic networks
 
 The following difference equations were used.
 
-![Equation 1](./Images/Equations/Eq1.png)
+![Equation 1](./images/Equations/Eq1.png)
 
-![Equation 2](./Images/Equations/Eq2.png)
+![Equation 2](./images/Equations/Eq2.png)
 
-![Equation 3](./Images/Equations/eq3.png)
+![Equation 3](./images/Equations/eq3.png)
