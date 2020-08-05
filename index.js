@@ -58,8 +58,8 @@ curr_recovered = Array.apply(null, new Array(Total_step + 1)).map(
 );
 
 (randoms = [...Array(7 * N)].map(() => Math.random().toPrecision(4))),
-  (localHost = "http://localhost:8888/"),
-  (pythonAnywhereHost = "http://vishalraj.pythonanywhere.com/"),
+  (localHost = "http://localhost:8888/"), // for local testing use CORS google chrome extension
+  (pythonAnywhereHost = "https://cors-anywhere.herokuapp.com/https://vishalraj.pythonanywhere.com/"),
   (currentHost = pythonAnywhereHost);
 
 // randoms = [0.9, 0.9, 0.9, 0.05, 0.05, 0.05, 0, 0, 0, 0, 0, 0];
